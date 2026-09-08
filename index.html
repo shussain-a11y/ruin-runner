@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Ruin Runner — an endless temple dash</title>
+  <meta name="description" content="Dodge, jump, and slide through a collapsing temple. How far can you run?" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- HUD -->
+  <div class="hud" id="hud" hidden>
+    <div class="hud__left">
+      <span class="hud__score" id="hud-score">0</span>
+      <span class="hud__coins" id="hud-coins">◈ 0</span>
+    </div>
+    <div class="hud__right">
+      <span class="hud__best" id="hud-best">best 0</span>
+      <button class="hud__mute" id="btn-mute" aria-label="Toggle sound">♪</button>
+    </div>
+  </div>
+
+  <!-- Start menu -->
+  <div class="overlay" id="menu">
+    <div class="overlay__card">
+      <p class="overlay__eyebrow">an endless temple dash</p>
+      <h1 class="overlay__title">Ruin<br />Runner</h1>
+      <p class="overlay__text">
+        The temple is collapsing behind you. Switch lanes around the stone
+        blocks, jump the fallen logs, slide under the gates — and grab every
+        relic shard you can.
+      </p>
+      <div class="controls">
+        <div class="controls__item"><kbd>←</kbd><kbd>→</kbd><span>switch lane</span></div>
+        <div class="controls__item"><kbd>↑</kbd><span>jump</span></div>
+        <div class="controls__item"><kbd>↓</kbd><span>slide</span></div>
+        <div class="controls__item"><span class="controls__touch">on touch: swipe · tap to jump</span></div>
+      </div>
+      <button class="btn" id="btn-start">Start running</button>
+    </div>
+  </div>
+
+  <!-- Game over -->
+  <div class="overlay" id="gameover" hidden>
+    <div class="overlay__card">
+      <p class="overlay__eyebrow">the temple got you</p>
+      <h2 class="overlay__title overlay__title--small">Run over</h2>
+      <p class="overlay__score">Score <strong id="final-score">0</strong></p>
+      <p class="overlay__substat" id="final-detail">0 relic shards collected</p>
+
+      <div class="submit" id="submit-row">
+        <input type="text" id="name-input" maxlength="16" placeholder="Your name" autocomplete="off" />
+        <button class="btn btn--small" id="btn-submit">Save score</button>
+      </div>
+      <p class="submit__note" id="submit-note"></p>
+
+      <div class="board">
+        <h3 class="board__title">Top runners</h3>
+        <ol class="board__list" id="board-list"></ol>
+      </div>
+
+      <button class="btn" id="btn-retry">Run again</button>
+    </div>
+  </div>
+
+  <script src="/js/game.js" defer></script>
+</body>
+</html>
